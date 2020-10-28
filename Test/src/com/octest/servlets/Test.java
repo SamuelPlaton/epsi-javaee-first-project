@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.octest.beans.Auteur;
+import com.octest.forms.ConnectionForm;
+
 
 @WebServlet("/Test")
 public class Test extends HttpServlet {
@@ -20,16 +23,16 @@ public class Test extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    	String name = request.getParameter("name");
-    	request.setAttribute("name", name);
-    	String [] noms = {"Sam", "Joshua", "Alex"};
-    	request.setAttribute("noms", noms);
+    	
         this.getServletContext().getRequestDispatcher("/WEB-INF/bonjour.jsp").forward(request, response);
     }
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        ConnectionForm form = new ConnectionForm();
+        form.verifierIdentifiants(request);
+        request.setAttribute("form", form);
+        this.getServletContext().getRequestDispatcher("/WEB-INF/bonjour.jsp").forward(request, response);
     }
 
 }

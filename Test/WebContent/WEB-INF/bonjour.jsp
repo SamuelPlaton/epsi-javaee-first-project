@@ -1,5 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -8,6 +6,21 @@
     </head>
     <body>
     <%@ include file="menu.jsp" %>
-        <p>Bonjour ${ !empty name ? name : ""} </p>
+        <form method="POST" action="bonjour">
+      
+        	<label for="login"> Login : </label>
+        	<input type="text" id="login" name="login"/>
+        	
+        	<label for="password"> Mot de passe </label>
+        	<input type="password" id="password" name="password"/>
+        	
+        	<button type="submit">
+        		Envoyer
+        	</button>
+        </form>
+        
+        <c:if test="${ !empty form }">
+        <p> <c:out value="${ form.resultat }"/> </p>
+        </c:if>
     </body>
 </html> 
