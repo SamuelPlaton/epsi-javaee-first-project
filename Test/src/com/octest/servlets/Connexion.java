@@ -6,23 +6,25 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
-@WebServlet("/accueil")
-public class Accueil extends HttpServlet {
+@WebServlet("/connexion")
+public class Connexion extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public Accueil() {
+    public Connexion() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		this.getServletContext().getRequestDispatcher("/WEB-INF/accueil.jsp").forward(request, response);
+		// If the user clicked on the disconnect button, disconnect
+		if(request.getParameter("disconnect") != null && request.getParameter("disconnect").equals("true")) {
+			HttpSession session = request.getSession();
+	    	session.invalidate();
+		}
+		this.getServletContext().getRequestDispatcher("/WEB-INF/connexion.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
 	}
-
 }

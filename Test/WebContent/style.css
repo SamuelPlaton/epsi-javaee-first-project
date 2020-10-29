@@ -1,0 +1,12 @@
+@charset "ISO-8859-1";
+
+#menu{
+	display: flex;
+	flex-direction: row;
+	background-color: red;
+}
+
+body{
+	color: red;
+	background-color: blue;
+}
