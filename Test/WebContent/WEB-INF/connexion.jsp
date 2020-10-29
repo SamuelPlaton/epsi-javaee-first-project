@@ -11,11 +11,13 @@
         <form method="POST" action="home" >
         <div class="d-flex flex-column mx-auto w-25">
         	<label for="name"> Nom :  </label>
-        	<input type="text" id="name" name="name" required="true"/>
-        	
+        	<input type="text" id="name" name="name" required="true" value="${ name }"/>
         	<label for="surname"> Prénom : </label>
-        	<input type="text" id="surname" name="surname" required="true"/>
-        	
+        	<input type="text" id="surname" name="surname" required="true" value="${ surname }"/>
+        	<div>
+        		<label for="remember">Se souvenir de moi </label>
+        		<input type="checkbox" id="remember" name="remember" <c:if test="${ rememberLogin }"> checked </c:if> />
+        	</div>
         	<button type="submit" class="btn btn-info mt-4 w-50 mx-auto">
         		Envoyer
         	</button>
